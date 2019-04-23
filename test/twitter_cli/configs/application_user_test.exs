@@ -1,10 +1,10 @@
-defmodule TwitterCli.ApplicationUser.ConfigTest do
+defmodule TwitterCli.Configs.ApplicationUserTest do
   use ExUnit.Case
-  alias TwitterCli.ApplicationUser.Config
+  alias TwitterCli.Configs.ApplicationUser
 
   test "configure with params" do
-    assert Config.configure("X", "XX", "XXX", "XXXX") === :ok
-    assert Config.get() === %OAuther.Credentials{
+    assert ApplicationUser.configure("X", "XX", "XXX", "XXXX") === :ok
+    assert ApplicationUser.get() === %OAuther.Credentials{
       consumer_key: "X",
       consumer_secret: "XX",
       method: :hmac_sha1,
@@ -14,8 +14,8 @@ defmodule TwitterCli.ApplicationUser.ConfigTest do
   end
 
   test "configure without params" do
-    assert Config.configure() === :ok
-    assert Config.get() === %OAuther.Credentials{
+    assert ApplicationUser.configure() === :ok
+    assert ApplicationUser.get() === %OAuther.Credentials{
       consumer_key: nil,
       consumer_secret: nil,
       method: :hmac_sha1,

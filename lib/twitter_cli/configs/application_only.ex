@@ -1,15 +1,12 @@
-defmodule TwitterCli.ApplicationOnly.Config do
+defmodule TwitterCli.Configs.ApplicationOnly do
   @doc """
   Set OAuth configuration values and initialise the process
   """
   def configure do
-    start_link(
-      %TwitterCli.Models.AppOnlyConfig{
-        consumer_key: Application.get_env(:twitter_cli, :twitter_consumer_key) || System.get_env("TWITTER_CONSUMER_KEY"),
-        consumer_secret: Application.get_env(:twitter_cli, :twitter_consumer_secret) || System.get_env("TWITTER_CONSUMER_SECRET")
-      }
+    configure(
+      Application.get_env(:twitter_cli, :twitter_consumer_key) || System.get_env("TWITTER_CONSUMER_KEY"),
+      Application.get_env(:twitter_cli, :twitter_consumer_secret) || System.get_env("TWITTER_CONSUMER_SECRET")
     )
-    :ok
   end
 
   def configure(consumer_key, consumer_secret) do
@@ -33,7 +30,13 @@ defmodule TwitterCli.ApplicationOnly.Config do
   Get the configuration object
   """
   def get do
-    Agent.get(__MODULE__, fn config -> config end)
+    case Process.whereis(__MODULE__) do
+      nil ->
+        configure()
+        get()
+      _pid ->
+        Agent.get(__MODULE__, fn config -> config end)
+    end
   end
 
   defp set(key, value) do

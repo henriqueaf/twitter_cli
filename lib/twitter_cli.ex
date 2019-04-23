@@ -1,49 +1,11 @@
 defmodule TwitterCli do
+  alias TwitterCli.API.ApplicationUser.Geo
+
   @moduledoc """
   Documentation for TwitterCli.
   """
 
-  @doc """
-  Initialises and configures TwitterCli with a `consumer_key` and
-  `consumer_secret`. If you're not doing anything particularly interesting here,
-  it's better to set them as environment variables and use `TwitterCli.configure_app_only/0`
+  defdelegate search_geo_by_query(query), to: Geo, as: :search_by_query
 
-  ## Example
-      iex(1)> TwitterCli.configure_app_only("XXXX", "XXXX")
-      :ok
-  """
-  defdelegate configure_app_only(consumer_key, consumer_secret), to: TwitterCli.ApplicationOnly.Config, as: :configure
-
-  @doc """
-  Initialises TwitterCli with system environment variables.
-  For this to work, set `TWITTER_CONSUMER_KEY` and `TWITTER_CONSUMER_SECRET`.
-
-  ## Example
-      TWITTER_CONSUMER_KEY=XXXX TWITTER_CONSUMER_SECRET=XXXX
-      iex(1)> TwitterCli.configure_app_only
-      :ok
-  """
-  defdelegate configure_app_only, to: TwitterCli.ApplicationOnly.Config, as: :configure
-
-  @doc """
-  Initialises and configures TwitterCli Application user with a `oauth_consumer_key`.
-  If you're not doing anything particularly interesting here,
-  it's better to set them as environment variables and use `TwitterCli.configure_app_user/0`
-
-  ## Example
-      iex(1)> TwitterCli.configure_app_user("X", "XX", "XXX", "XXXX")
-      :ok
-  """
-  defdelegate configure_app_user(consumer_key, consumer_secret, token, token_secret), to: TwitterCli.ApplicationUser.Config, as: :configure
-
-  @doc """
-  Initialises TwitterCli with system environment variables.
-  For this to work, set `TWITTER_CONSUMER_KEY`.
-
-  ## Example
-      TWITTER_CONSUMER_KEY=XXXX
-      iex(1)> TwitterCli.configure_app_user
-      :ok
-  """
-  defdelegate configure_app_user, to: TwitterCli.ApplicationUser.Config, as: :configure
+  defdelegate search_geo_by_lat_lng(latitude, longitude), to: Geo, as: :search_by_lat_lng
 end
