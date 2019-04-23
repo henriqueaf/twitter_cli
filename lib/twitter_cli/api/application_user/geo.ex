@@ -1,5 +1,5 @@
-defmodule TwitterCli.API.Geo do
-  import TwitterCli.API.Base
+defmodule TwitterCli.API.ApplicationUser.Geo do
+  import TwitterCli.API.ApplicationUser.Base
 
   @moduledoc """
   Provides access to the `/geo/search.json` area of the Instagram API (for internal use).
@@ -10,6 +10,6 @@ defmodule TwitterCli.API.Geo do
   Optionally take an access token.
   """
   def search(query) do
-    get("/geo/search.json", [{:params, %{query: query}}]).result
+    get("/geo/search.json", [{:params, [{"query", query}]}])
   end
 end

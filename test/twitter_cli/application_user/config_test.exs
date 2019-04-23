@@ -3,37 +3,24 @@ defmodule TwitterCli.ApplicationUser.ConfigTest do
   alias TwitterCli.ApplicationUser.Config
 
   test "configure with params" do
-    assert Config.configure("XXXX") === :ok
-    assert :sys.get_state(Config) == %TwitterCli.Models.AppUserConfig{
-      oauth_callback: "http://localhost:3000",
-      oauth_consumer_key: "XXXX",
-      oauth_token_secret: nil,
-      oauth_token: nil,
-      oauth_verifier: nil
+    assert Config.configure("X", "XX", "XXX", "XXXX") === :ok
+    assert Config.get() === %OAuther.Credentials{
+      consumer_key: "X",
+      consumer_secret: "XX",
+      method: :hmac_sha1,
+      token: "XXX",
+      token_secret: "XXXX"
     }
   end
 
   test "configure without params" do
     assert Config.configure() === :ok
-    assert :sys.get_state(Config) === %TwitterCli.Models.AppUserConfig{
-      oauth_callback: "http://localhost:3000",
-      oauth_consumer_key: nil,
-      oauth_token_secret: nil,
-      oauth_token: nil,
-      oauth_verifier: nil
+    assert Config.get() === %OAuther.Credentials{
+      consumer_key: nil,
+      consumer_secret: nil,
+      method: :hmac_sha1,
+      token: nil,
+      token_secret: nil
     }
-  end
-
-  test "set key" do
-    Config.configure()
-    sample_key = %TwitterCli.Models.AppUserConfig{}
-      |> Map.from_struct()
-      |> Map.keys()
-      |> Enum.random()
-
-    assert Config.set(sample_key, "TEST") === :ok
-
-    opts = %{sample_key => "TEST"}
-    assert :sys.get_state(Config) === struct(TwitterCli.Models.AppUserConfig, opts)
   end
 end

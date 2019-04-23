@@ -1,4 +1,4 @@
-defmodule TwitterCli.API.Base do
+defmodule TwitterCli.API.ApplicationOnly.Base do
   @moduledoc """
   Provides general request making and handling functionality (for internal use).
   """
@@ -21,10 +21,10 @@ defmodule TwitterCli.API.Base do
   General HTTP `POST` request function. Takes a url part,
   and optionally a token, data Map and list of params.
   """
-  def post(url_part, body \\ {}, headers \\ []) do
+  def post(url_part, body \\ "", headers \\ [], options \\ []) do
     url_part
       |> build_url
-      |> HTTPoison.post!(body, headers)
+      |> HTTPoison.post!(body, headers, options)
       |> handle_response
   end
 

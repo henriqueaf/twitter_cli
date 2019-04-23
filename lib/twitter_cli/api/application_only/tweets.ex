@@ -1,5 +1,5 @@
-defmodule TwitterCli.API.Tweets do
-  import TwitterCli.API.Base
+defmodule TwitterCli.API.ApplicationOnly.Tweets do
+  import TwitterCli.API.ApplicationOnly.Base
   alias TwitterCli.ApplicationOnly.Config
 
   @moduledoc """

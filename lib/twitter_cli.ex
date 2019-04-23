@@ -31,10 +31,10 @@ defmodule TwitterCli do
   it's better to set them as environment variables and use `TwitterCli.configure_app_user/0`
 
   ## Example
-      iex(1)> TwitterCli.configure_app_user("XXXX")
+      iex(1)> TwitterCli.configure_app_user("X", "XX", "XXX", "XXXX")
       :ok
   """
-  defdelegate configure_app_user(oauth_consumer_key), to: TwitterCli.ApplicationUser.Config, as: :configure
+  defdelegate configure_app_user(consumer_key, consumer_secret, token, token_secret), to: TwitterCli.ApplicationUser.Config, as: :configure
 
   @doc """
   Initialises TwitterCli with system environment variables.
