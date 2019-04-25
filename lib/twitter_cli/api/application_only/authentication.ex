@@ -6,7 +6,7 @@ defmodule TwitterCli.API.ApplicationOnly.Authentication do
   Authenticates application.
   """
 
-  def application_only do
+  def authenticate do
     %{token_type: "bearer", access_token: access_token} = post(
       "/oauth2/token", # url_part
       "grant_type=client_credentials", # body
