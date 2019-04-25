@@ -27,16 +27,11 @@ defmodule TwitterCli.Configs.ApplicationUser do
   Get the configuration object
   """
   def get do
-    case Process.whereis(__MODULE__) do
-      nil ->
-        configure()
-        get()
-      _pid ->
-        Agent.get(__MODULE__, fn config -> config end)
-    end
+    Agent.get(__MODULE__, fn config -> config end)
   end
 
-  defp start_link(value) do
-    Agent.start_link(fn -> value end, name: __MODULE__)
+  @spec start_link(OAuther.Credentials.t()) :: atom
+  defp start_link(config) do
+    Agent.start_link(fn -> config end, name: __MODULE__)
   end
 end

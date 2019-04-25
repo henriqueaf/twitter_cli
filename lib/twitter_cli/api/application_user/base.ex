@@ -2,6 +2,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
   @moduledoc """
   Provides general request making and handling functionality (for internal use).
   """
+  import TwitterCli.API.Helpers, only: [handle_response: 1]
   alias TwitterCli.Configs.ApplicationUser
 
   @base_url "https://api.twitter.com/1.1"
@@ -18,19 +19,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
     {header, _req_params} = generate_authorization_header(authorization_params)
 
     HTTPoison.get!(url, [header], options)
-      |> handle_response
-  end
-
-  defp handle_response(data) do
-    body = Poison.decode!(data.body, keys: :atoms)
-
-    case data do
-      %{status_code: 200} ->
-        body
-      _ ->
-        %{errors: [error | _]} = body
-        raise(TwitterCli.Error, [code: error.code, message: "#{error.message}"])
-    end
+    |> handle_response
   end
 
   defp build_url(url_part) do
