@@ -1,0 +1,41 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Authorization": "***"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.twitter.com/1.1/geo/search.json"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"errors\":[{\"code\":12,\"message\":\"You must provide valid coordinates, IP address, query, or attributes.\"}],\"query\":{\"url\":\"https:\\/\\/api.twitter.com\\/1.1\\/geo\\/search.json?invalid=whatever\",\"type\":\"search\",\"params\":{\"accuracy\":0.0,\"granularity\":\"\",\"query\":\"\",\"autocomplete\":false,\"trim_place\":false}}}",
+      "headers": {
+        "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0",
+        "content-length": "300",
+        "content-type": "application/octet-stream",
+        "date": "Fri, 26 Apr 2019 21:56:01 GMT",
+        "expires": "Tue, 31 Mar 1981 05:00:00 GMT",
+        "last-modified": "Fri, 26 Apr 2019 21:56:01 GMT",
+        "pragma": "no-cache",
+        "server": "tsa_d",
+        "set-cookie": "personalization_id=\"v1_NR928gNhvQkuHho7XbfwZA==\"; Max-Age=63072000; Expires=Sun, 25 Apr 2021 21:56:01 GMT; Path=/; Domain=.twitter.com",
+        "strict-transport-security": "max-age=631138519",
+        "x-connection-hash": "1f943ebb1a691f95ebc3fa2d8be87434",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-rate-limit-limit": "15",
+        "x-rate-limit-remaining": "12",
+        "x-rate-limit-reset": "1556316272",
+        "x-response-time": "140",
+        "x-twitter-response-tags": "BouncerCompliant",
+        "x-xss-protection": "1; mode=block; report=https://twitter.com/i/xss_report"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

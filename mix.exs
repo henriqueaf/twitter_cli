@@ -25,7 +25,8 @@ defmodule TwitterCli.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       {:httpoison, "~> 1.4"},
       {:poison, "~> 3.1.0"},
-      {:oauther, "~> 1.1"}
+      {:oauther, "~> 1.1"},
+      {:exvcr, "~> 0.10", only: :test}
     ]
   end
 end
