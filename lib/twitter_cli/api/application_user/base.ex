@@ -5,7 +5,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
   import TwitterCli.API.Helpers, only: [handle_response: 1]
   alias TwitterCli.Configs.ApplicationUser
 
-  @base_url "https://api.twitter.com/1.1"
+  @base_url "http://localhost:8081"# : "https://api.twitter.com/1.1"
 
   @doc """
   General HTTP `GET` request function. Takes a url part,

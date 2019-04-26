@@ -3,11 +3,12 @@ defmodule TwitterCli.API.ApplicationUser.BaseTest do
   alias TwitterCli.API.ApplicationUser.Base
 
   setup_all do
-    {:ok, app_user_config: TwitterCli.Configs.ApplicationUser.configure()}
+    TwitterCli.Configs.ApplicationUser.configure()
+    :ok
   end
 
   test "get with valid params" do
     query = "Fortaleza"
-    assert Base.get("/geo/search.json", [{:params, [{"query", query}]}]) === true
+    assert is_map(Base.get("/geo/search.json", [{:params, [{"query", query}]}]))
   end
 end
