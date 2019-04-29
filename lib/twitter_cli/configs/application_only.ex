@@ -1,4 +1,4 @@
-defmodule TwitterCli.Configs.ApplicationOnly do
+defmodule TwitterCli.ApplicationOnlyConfig do
   @doc """
   Set OAuth configuration values and initialise the process
   """

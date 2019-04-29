@@ -1,6 +1,6 @@
 defmodule TwitterCli.API.ApplicationOnly.Authentication do
   import TwitterCli.API.ApplicationOnly.Base
-  alias TwitterCli.Configs.ApplicationOnly
+  alias TwitterCli.ApplicationOnlyConfig
 
   @moduledoc """
   Authenticates application.
@@ -13,7 +13,7 @@ defmodule TwitterCli.API.ApplicationOnly.Authentication do
       generate_headers() # headers
     )
 
-    ApplicationOnly.set_access_token(access_token)
+    ApplicationOnlyConfig.set_access_token(access_token)
   end
 
   defp generate_headers do
@@ -27,7 +27,7 @@ defmodule TwitterCli.API.ApplicationOnly.Authentication do
     %TwitterCli.Models.AppOnlyConfig{
       consumer_key: consumer_key,
       consumer_secret: consumer_secret
-    } = ApplicationOnly.get
+    } = ApplicationOnlyConfig.get()
 
     Base.encode64("#{consumer_key}:#{consumer_secret}")
   end

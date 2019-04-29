@@ -1,6 +1,6 @@
 defmodule TwitterCli.API.ApplicationOnly.Tweets do
   import TwitterCli.API.ApplicationOnly.Base
-  alias TwitterCli.Configs.ApplicationOnly
+  alias TwitterCli.ApplicationOnlyConfig
 
   @moduledoc """
   Provides access to the `/search/tweets.json` area of the Instagram API (for internal use).
@@ -17,7 +17,7 @@ defmodule TwitterCli.API.ApplicationOnly.Tweets do
   defp generate_headers do
     [
       {"Content-Type", "application/json"},
-      {"Authorization", "Bearer #{ApplicationOnly.get().access_token}"}
+      {"Authorization", "Bearer #{ApplicationOnlyConfig.get().access_token}"}
     ]
   end
 end

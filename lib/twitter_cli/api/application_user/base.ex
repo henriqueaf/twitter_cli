@@ -3,7 +3,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
   Provides general request making and handling functionality (for internal use).
   """
   import TwitterCli.API.Helpers, only: [handle_response: 1]
-  alias TwitterCli.Configs.ApplicationUser
+  alias TwitterCli.ApplicationUserConfig
 
   @base_url "https://api.twitter.com/1.1"
 
@@ -27,7 +27,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
   end
 
   defp generate_authorization_params(method, url, params) do
-    credentials = ApplicationUser.get()
+    credentials = ApplicationUserConfig.get()
     OAuther.sign(method, url, params, credentials)
   end
 

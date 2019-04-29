@@ -1,6 +1,6 @@
-defmodule TwitterCli.Configs.ApplicationOnlyTest do
+defmodule TwitterCli.ApplicationOnlyConfigTest do
   use ExUnit.Case
-  alias TwitterCli.Configs.ApplicationOnly
+  alias TwitterCli.ApplicationOnlyConfig
 
   setup_all do
     System.delete_env "TWITTER_CONSUMER_KEY"
@@ -12,8 +12,8 @@ defmodule TwitterCli.Configs.ApplicationOnlyTest do
   end
 
   test "configure with params" do
-    assert ApplicationOnly.configure("XXXX", "XXXX") === :ok
-    assert ApplicationOnly.get() === %TwitterCli.Models.AppOnlyConfig{
+    assert ApplicationOnlyConfig.configure("XXXX", "XXXX") === :ok
+    assert ApplicationOnlyConfig.get() === %TwitterCli.Models.AppOnlyConfig{
       consumer_key: "XXXX",
       consumer_secret: "XXXX",
       access_token: nil
@@ -21,8 +21,8 @@ defmodule TwitterCli.Configs.ApplicationOnlyTest do
   end
 
   test "configure without params" do
-    assert ApplicationOnly.configure() === :ok
-    assert ApplicationOnly.get() === %TwitterCli.Models.AppOnlyConfig{
+    assert ApplicationOnlyConfig.configure() === :ok
+    assert ApplicationOnlyConfig.get() === %TwitterCli.Models.AppOnlyConfig{
       consumer_key: nil,
       consumer_secret: nil,
       access_token: nil
@@ -30,9 +30,9 @@ defmodule TwitterCli.Configs.ApplicationOnlyTest do
   end
 
   test "set_access_token" do
-    ApplicationOnly.configure() # configure first to start the Agent on start_link
-    assert ApplicationOnly.set_access_token("XXX") === :ok
-    assert ApplicationOnly.get() === %TwitterCli.Models.AppOnlyConfig{
+    ApplicationOnlyConfig.configure() # configure first to start the Agent on start_link
+    assert ApplicationOnlyConfig.set_access_token("XXX") === :ok
+    assert ApplicationOnlyConfig.get() === %TwitterCli.Models.AppOnlyConfig{
       consumer_key: nil,
       consumer_secret: nil,
       access_token: "XXX"

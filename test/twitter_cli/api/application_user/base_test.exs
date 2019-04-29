@@ -10,7 +10,7 @@ defmodule TwitterCli.API.ApplicationUser.BaseTest do
     System.put_env "TWITTER_ACCESS_TOKEN",        "XXXXXXXXXXXX"
     System.put_env "TWITTER_ACCESS_TOKEN_SECRET", "XXXXXXXXXXXX"
 
-    TwitterCli.Configs.ApplicationUser.configure()
+    TwitterCli.ApplicationUserConfig.configure()
 
     :ok
   end
