@@ -13,3 +13,7 @@ defmodule TwitterCli.Models.Geo do
     :country_code, :full_name, :id, :name, :place_type, :url
   ]
 end
+
+defmodule TwitterCli.Models.Trend do
+  defstruct [:name, :promoted_content, :query, :tweet_volume, :url]
+end

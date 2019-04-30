@@ -3,12 +3,11 @@ defmodule TwitterCli.API.ApplicationUser.Geo do
   alias TwitterCli.API.Parser
 
   @moduledoc """
-  Provides access to the `/geo/search.json` area of the Instagram API (for internal use).
+  Provides access to the `/geo/search.json` area of the Twitter API.
   """
 
   @doc """
-  Fetch a list of tags as `%TwitterCli.Models.Geo` from the API who match a query.
-  Optionally take an access token.
+  Fetch a list of places as `%TwitterCli.Models.Geo` from the API who match a query.
   """
   def search_by_query(query) do
     get("/geo/search.json", [{:params, [{"query", query}]}])
