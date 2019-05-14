@@ -1,5 +1,10 @@
 defmodule TwitterCli do
+  use Application
   alias TwitterCli.API.ApplicationUser.Geo
+
+  def start(_type, _args) do
+    TwitterCli.Supervisor.start_link
+  end
 
   @moduledoc """
   Documentation for TwitterCli.

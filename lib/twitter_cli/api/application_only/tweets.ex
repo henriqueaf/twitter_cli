@@ -17,7 +17,7 @@ defmodule TwitterCli.API.ApplicationOnly.Tweets do
   defp generate_headers do
     [
       {"Content-Type", "application/json"},
-      {"Authorization", "Bearer #{ApplicationOnlyConfig.get().access_token}"}
+      {"Authorization", "Bearer #{ApplicationOnlyConfig.get_config().access_token}"}
     ]
   end
 end

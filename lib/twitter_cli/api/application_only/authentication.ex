@@ -27,7 +27,7 @@ defmodule TwitterCli.API.ApplicationOnly.Authentication do
     %TwitterCli.Models.AppOnlyConfig{
       consumer_key: consumer_key,
       consumer_secret: consumer_secret
-    } = ApplicationOnlyConfig.get()
+    } = ApplicationOnlyConfig.get_config()
 
     Base.encode64("#{consumer_key}:#{consumer_secret}")
   end

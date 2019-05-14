@@ -27,7 +27,7 @@ defmodule TwitterCli.API.ApplicationUser.Base do
   end
 
   defp generate_authorization_params(method, url, params) do
-    credentials = ApplicationUserConfig.get()
+    credentials = ApplicationUserConfig.get_config()
     OAuther.sign(method, url, params, credentials)
   end
 
